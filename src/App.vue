@@ -1,21 +1,18 @@
 <template>
-  <div id="app">
-    <p>App组件</p>
+  <div>
+    <router-view></router-view>
+    <FooterGuide/>
   </div>
 </template>
 
 <script>
-
+import FooterGuide from './components/FooterGuide/FooterGuide'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {FooterGuide}
 }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  *
-    margin 0
-    padding 0
-  p
-    width: 375px
-    background: skyblue
+
 </style>
