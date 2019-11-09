@@ -8,7 +8,7 @@
     <GshopHeader title="我的"/>
     
     <section class="profile-number">
-      <a href="javascript:" class="profile-link">
+      <a href="javascript:" class="profile-link" @click="toLogin">
         <div class="profile_image">
           <i class="iconfont icon-person_round_fill"></i>
         </div>
@@ -99,6 +99,11 @@
 
 <script type="text/ecmascript-6">
   export default {
+    methods: {
+      toLogin() {
+        this.$router.replace('/Login')
+      }
+    }
   }
 </script>
 
