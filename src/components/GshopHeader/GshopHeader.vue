@@ -1,26 +1,26 @@
 <template>
-    <header class="header">
-
-        <slot name="left"></slot>
-
-        <a class="header_title">
-          <span class="header_title_text ellipsis">{{title}}</span>
-        </a>
-
-        <slot name="right"></slot>
-    </header>
+  <header class="header">
+    <slot name="left"></slot>
+    <a class="header_title">
+      <span class="header_title_text ellipsis">{{title}}</span>
+    </a>
+    <slot name="right"></slot>
+  </header>
 </template>
 
 <script type="text/ecmascript-6">
   export default {
-    props : {
-      title: String
+    props: {
+      title: {
+        required:true,
+        type:String
+      }
     }
   }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  .header //头部公共css
+  .header
     background-color #02a774
     position fixed
     z-index 100
@@ -35,17 +35,16 @@
       transform translateY(-50%)
       width 10%
       height 50%
-      .iconfont
-        font-size 22px
+      .icon-sousuo
+        font-size 25px
         color #fff
     .header_title
       position absolute
       top 50%
       left 50%
       transform translate(-50%, -50%)
-      width 30%
+      width 50%
       color #fff
-      font-size 22px
       text-align center
       .header_title_text
         font-size 20px

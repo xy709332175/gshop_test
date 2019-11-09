@@ -39,6 +39,6 @@ export default [
   },    
   {
     path: '/',
-    redirect: Msite
+    redirect: '/Msite'
   },
 ]
