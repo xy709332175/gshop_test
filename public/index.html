@@ -17,24 +17,24 @@
   
   <script type="text/javascript">
 
-    function remRefresh() {
-      let clientWidth = document.documentElement.clientWidth
-      let rem = clientWidth / 10
-      document.documentElement.style.fontSize = rem + 'px'
-      document.body.style.fontSize = '16px'
-    }
+    // function remRefresh() {
+    //   let clientWidth = document.documentElement.clientWidth
+    //   let rem = clientWidth / 10
+    //   document.documentElement.style.fontSize = rem + 'px'
+    //   document.body.style.fontSize = '16px'
+    // }
 
-    window.addEventListener('pageShow', () => {
-      remRefresh()
-    })
+    // window.addEventListener('pageShow', () => {
+    //   remRefresh()
+    // })
 
-    let timeoutId
-    window.addEventListener('resize', () => {
-      timeoutId && clearTimeout(timeoutId)
-      timeoutId = setTimeout((() => {
-        console.log('resize');
-        remRefresh()
-      }),2000)
-    })
+    // let timeoutId
+    // window.addEventListener('resize', () => {
+    //   timeoutId && clearTimeout(timeoutId)
+    //   timeoutId = setTimeout((() => {
+    //     console.log('resize');
+    //     remRefresh()
+    //   }),2000)
+    // })
   </script>
 </html>
