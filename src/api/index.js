@@ -19,7 +19,7 @@ export const getShops = (latitude,longitude) => ajax({
 export const loginWithPassword = (name,pwd,captcha) => ajax({
   url: '/login_pwd',
   method: 'POST',
-  params: {
+  data: {
     name,
     pwd,
     captcha
@@ -35,7 +35,7 @@ export const loginWithPhone = (phone,code) => ajax({
   }
 })
 
-export const sendCode = (phone) => ajax({
+export const sendCode = phone => ajax({
   url: '/sendcode',
   params: {
     phone,

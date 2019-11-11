@@ -140,6 +140,7 @@ import { loginWithPassword } from '../../../../gshop_study/src/api'
 
           if(result.code === 0) {
             console.log('登录成功')
+            this.$store.dispatch('getUserAction',{user:result.data})
             this.$router.replace('/profile')
           }
 
@@ -148,13 +149,18 @@ import { loginWithPassword } from '../../../../gshop_study/src/api'
 
         }
       },
-      sendCode () {
+      async sendCode () {
+        let result = await this.$API.sendCode(this.phone)
+        if(result.code === 0){
+          console.log('短信验证成功')
+        } else {
+          console.log('短信验证失败')
+        }
         this.countDown = 10
         this.intervalId = setInterval(() => {
           this.countDown--
           this.countDown ===0 && clearInterval(this.intervalId)
         }, 1000);
-        this.$API.sendCode(this.phone)
       }
 
     },
