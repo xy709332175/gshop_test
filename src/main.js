@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
+// 自动根据设备情况动态设置rem的值的大小
 import 'lib-flexible/flexible'
+// 检测器
 import './veevalidate'
 import * as API from './api'
 

@@ -1,6 +1,7 @@
 <template>
   <div>
     <router-view></router-view>
+    <!-- 设置在login界面是否显示底部导航 -->
     <FooterGuide v-if="$route.meta.isShowFooterGuide"/>
   </div>
 </template>
