@@ -101,6 +101,7 @@
 
 <script type="text/ecmascript-6">
 import { loginWithPassword } from '../../../../gshop_study/src/api'
+import {Toast} from 'mint-ui'
   export default {
     data () {
       return {
@@ -123,7 +124,7 @@ import { loginWithPassword } from '../../../../gshop_study/src/api'
         let names = isPasswordLogin ? ['username', 'pwd', 'captcha'] : ['phone', 'code']
         const success = await this.$validator.validateAll(names)
         if(success) {
-          console.log('验证成功')
+          Toast('验证成功')
           let result
           if(isPasswordLogin) {
             result = await this.$API.loginWithPassword(name, pwd, captcha)
@@ -139,22 +140,22 @@ import { loginWithPassword } from '../../../../gshop_study/src/api'
           }
 
           if(result.code === 0) {
-            console.log('登录成功')
+            console.loToast('登录成功')
             this.$store.dispatch('getUserAction',{user:result.data})
             this.$router.replace('/profile')
           }
 
         } else {
-          console.log('验证失败')
+          Toast('验证失败')
 
         }
       },
       async sendCode () {
         let result = await this.$API.sendCode(this.phone)
         if(result.code === 0){
-          console.log('短信验证成功')
+          Toast('短信验证成功')
         } else {
-          console.log('短信验证失败')
+          Toast('短信验证失败')
         }
         this.countDown = 10
         this.intervalId = setInterval(() => {

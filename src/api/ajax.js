@@ -1,6 +1,7 @@
 import axios from 'axios'
 import qs from 'qs'
 import router from '../router'
+import {MessageBox} from 'mint-ui'
 
 
 const instance = axios.create({
@@ -34,17 +35,17 @@ instance.interceptors.response.use(
       router.currentRouter.path !== '/login' && router.replace('/login')
     } else {
       if(error.response.status === 401) {
-        alert('token过期,请重新登录')
+        MessageBox.alert('token过期,请重新登录')
         router.currentRouter.path !== '/login' && router.replace('/login')
       } else if (error.response.status === 404){
-        alert('请求资源未找到')
+        MessageBox.alert('请求资源未找到')
       } else {
-        alert('请求失败')
+        MessageBox.alert('请求失败')
       }
     }
 
 
-    alert('请求失败')
+    MessageBox.alert('请求失败')
     return new Promise (() => {})
   }
 
