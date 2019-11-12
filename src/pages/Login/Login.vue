@@ -140,7 +140,7 @@ import {Toast} from 'mint-ui'
           }
 
           if(result.code === 0) {
-            console.loToast('登录成功')
+            Toast('登录成功')
             this.$store.dispatch('getUserAction',{user:result.data})
             this.$router.replace('/profile')
           }
