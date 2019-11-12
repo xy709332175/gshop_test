@@ -4,7 +4,8 @@ import {
   SAVE_CATEGORYS,
   SAVE_SHOPS,
   SAVE_USER,
-  SAVE_TOKEN
+  SAVE_TOKEN,
+  LOGOUT
 } from './mutations-type'
 
 
@@ -24,5 +25,11 @@ export default {
   [SAVE_TOKEN](state,{token}) {
     localStorage.setItem('token_key',token)
     state.token = token
+  },
+  [LOGOUT](state) {
+    state.token = '',
+    state.user = {},
+    localStorage.removeItem('token_key')
+
   },
 }
