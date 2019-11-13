@@ -1,8 +1,8 @@
 <template>
   <div id="goodContainer">
     <div class="leftContainer">
-      <ul class="navList">
-        <li class="navItem" :class="{active: navIndex === index}" v-for="(good, index) in goods" :key="index">
+      <ul ref="leftUl" class="navList">
+        <li @click="changeNavIndex(index)" class="navItem" :class="{active: navIndex === index}" v-for="(good, index) in goods" :key="index">
           <p>{{good.name}}</p>
         </li>
       </ul>
@@ -62,13 +62,20 @@
       }),
       navIndex() {
         let {tops,scrollY} = this
-        return tops.findIndex((top,index) => scrollY >= top && scrollY < tops[index + 1])
+        let index = tops.findIndex((top,index) => scrollY >= top && scrollY < tops[index + 1])
+
+        if(this.leftScroll && this.index !== index ) {
+          this.index = index
+          this.leftScroll.scrollToElement(this.$refs.leftUl.children[index],2000)
+        }
+        return index
       }
     },
     methods: {
       _initScroll(){
-        new BScroll('.leftContainer', {
+        this.leftScroll = new BScroll('.leftContainer', {
           scrollY: true, // 设置纵向滑动
+          click: true
         })
         this.rightScroll = new BScroll('.rightContainer', {
           scrollY: true, // 设置纵向滑动
@@ -91,6 +98,10 @@
           tops.push(top)
         }
         this.tops = tops
+      },
+      changeNavIndex(index){
+          this.scrollY = this.tops[index]
+          this.rightScroll.scrollTo(0, -this.scrollY, 2000)
       }
     },
     watch: {
