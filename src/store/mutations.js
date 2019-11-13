@@ -30,6 +30,5 @@ export default {
     state.token = '',
     state.user = {},
     localStorage.removeItem('token_key')
-
   },
 }

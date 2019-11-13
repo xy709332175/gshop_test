@@ -215,6 +215,7 @@
 
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll'
+  import {mapState} from 'vuex'
   export default {
     mounted(){
       new BScroll('.leftContainer', {
@@ -222,6 +223,11 @@
       })
       new BScroll('.rightContainer', {
         scrollY: true, // 设置纵向滑动
+      })
+    },
+    computed: {
+      ...mapState({
+        goods: state => state.shop.shopDatas.goods
       })
     }
   };
