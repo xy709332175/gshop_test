@@ -12,8 +12,10 @@ import './mock/mockServer'
 import router from './router'
 import store from './store'
 import GshopHeader from './components/GshopHeader/GshopHeader.vue'
+import CartControl from './components/CartControl/CartControl.vue'
 
 Vue.component('GshopHeader',GshopHeader)
+Vue.component('CartControl',CartControl)
 Vue.component(Button.name, Button)
 
 Vue.config.productionTip = false

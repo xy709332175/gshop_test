@@ -30,7 +30,9 @@
                 <div class="price">
                   <span class="now">￥{{food.price}}</span>
                 </div>
-                <div class="cartcontrol-wrapper">CartControl组件</div>
+                <div class="cartcontrol-wrapper">
+                  <CartControl :food="food" />
+                </div>
               </div>
             </li>
           </ul>
@@ -79,7 +81,8 @@
         })
         this.rightScroll = new BScroll('.rightContainer', {
           scrollY: true, // 设置纵向滑动
-          probeType: 2
+          probeType: 2,
+          click: true
         })
         this.rightScroll.on('scroll',({x,y}) => {
           this.scrollY = Math.abs(y)
