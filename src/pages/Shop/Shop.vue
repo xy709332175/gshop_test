@@ -41,6 +41,11 @@
       } else {
         this.$store.dispatch('getShopDatasAction')
       }
+      window.addEventListener('beforeunload', () => {
+        // sessionStorage.setItem('shopDatas', JSON.stringify(this.shopDatas))
+        // 分别保存的话导致shopDatas和cartShops是两个独立的对象，互相没有引用关联，
+        // sessionStorage.setItem('cartShops', JSON.stringify(this.cartShops))
+      })
     },
     beforeDestroy(){
       sessionStorage.setItem('shopDatas',JSON.stringify(this.shopDatas))
