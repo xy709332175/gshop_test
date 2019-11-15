@@ -39,13 +39,18 @@
         </li>
       </ul>
     </div>
+    <ShopCart />
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll'
   import {mapState} from 'vuex'
+  import ShopCart from '../../../components/ShopCart/ShopCart'
   export default {
+    components:{
+      ShopCart
+    },
     data () {
       return {
         scrollY : 0,
@@ -82,7 +87,7 @@
         this.rightScroll = new BScroll('.rightContainer', {
           scrollY: true, // 设置纵向滑动
           probeType: 2,
-          click: true
+          // click: true
         })
         this.rightScroll.on('scroll',({x,y}) => {
           this.scrollY = Math.abs(y)
@@ -126,7 +131,7 @@
     // position absolute
     // bottom 0
     // top 224px
-    height calc(100vh - 224px)  /*vh, vw 1vh == 1%视口高度*/
+    height calc(100vh - 272px)  /*vh, vw 1vh == 1%视口高度*/
     .leftContainer
       width 80px
       background #f3f5f7
