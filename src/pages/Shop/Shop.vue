@@ -18,11 +18,32 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {mapState} from 'vuex'
+  import {SAVE_SHOPDATAS, SAVE_CARTSHOPS} from '../../store/mutations-type'
   import ShopHeader from '../../components/ShopHeader/ShopHeader'
   export default {
     components:{ShopHeader},
+    computed: {
+      ...mapState({
+        shopDatas: state => state.shop.shopDatas,
+        cartShops: state => state.shop.cartShops
+      })
+    },
     mounted () {
-      this.$store.dispatch('getShopDatasAction')
+      if(sessionStorage.getItem('shopDatas')) {
+        let shopDatas = JSON.parse(sessionStorage.getItem('shopDatas'))
+        let cartShops = shopDatas.goods.reduce((pre,good) => {
+          pre.push(...good.foods.filter(food => food.count))
+          return pre
+        }, [])
+        this.$store.commit(SAVE_SHOPDATAS, {shopDatas})
+        this.$store.commit(SAVE_CARTSHOPS, {cartShops})
+      } else {
+        this.$store.dispatch('getShopDatasAction')
+      }
+    },
+    beforeDestroy(){
+      sessionStorage.setItem('shopDatas',JSON.stringify(this.shopDatas))
     }
   }
 </script>

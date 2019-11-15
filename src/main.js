@@ -13,6 +13,7 @@ import router from './router'
 import store from './store'
 import GshopHeader from './components/GshopHeader/GshopHeader.vue'
 import CartControl from './components/CartControl/CartControl.vue'
+import i18n from './i18n'
 
 Vue.component('GshopHeader',GshopHeader)
 Vue.component('CartControl',CartControl)
@@ -26,5 +27,6 @@ new Vue({
   components: {App},
   template: '<App />',
   router,
+  i18n,
   store
 })

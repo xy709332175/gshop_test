@@ -88,13 +88,18 @@
 
             </section>
           </div>
-          <button @click.prevent="login" class="login_submit">登录</button>
+          <button @click.prevent="login" class="login_submit">{{$t('login_login')}}</button>
         </form>
-        <a href="javascript:;" class="about_us">关于我们</a>
+        <a href="javascript:;" class="about_us">{{$t('login_aboutUs')}}</a>
       </div>
       <span href="javascript:" class="go_back" @click="$router.back()">
         <i class="iconfont icon-jiantou2"></i>
       </span>
+    </div>
+    <div class="languages">
+      <mt-button type="primary" @click="$i18n.locale = 'Chinese'">中文</mt-button>
+      <mt-button type="primary" @click="$i18n.locale = 'English'">英文</mt-button>
+      <mt-button type="primary" @click="$i18n.locale = 'Japanese'">日文</mt-button>
     </div>
   </div>
 </template>
@@ -311,5 +316,8 @@ import {Toast} from 'mint-ui'
           >.iconfont
             font-size 20px
             color #999
- 
+      .languages
+        margin-top 50px
+        display flex
+        justify-content space-around
 </style>

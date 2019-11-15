@@ -44,6 +44,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import Vue from 'vue'
   import BScroll from 'better-scroll'
   import {mapState} from 'vuex'
   import ShopCart from '../../../components/ShopCart/ShopCart'

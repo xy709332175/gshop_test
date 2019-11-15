@@ -46,6 +46,7 @@
   import {mapGetters,mapState} from 'vuex'
   import {CLEAR_CARTSHOPS} from '../../store/mutations-type'
   import {MessageBox} from 'mint-ui'
+  import BScroll from 'better-scroll'
   export default {
     data () {
       return {
@@ -93,7 +94,14 @@
     },
     watch: {
       totalCount(newValue) {
-        !!!newValue && (this.isShowCartShop = false)
+        if(!this.BScroll) {
+          this.BScroll = new BScroll('.list-content',{
+            scrollY : true
+          }) 
+          }else {
+            this.BScroll.refresh()
+          }
+        !newValue && (this.isShowCartShop = false)
       }
     }
 

@@ -4,7 +4,8 @@ import {
   SAVE_SHOPDATAS,
   ADD_FOOD_COUNT,
   DEL_FOOD_COUNT,
-  CLEAR_CARTSHOPS
+  CLEAR_CARTSHOPS,
+  SAVE_CARTSHOPS,
 } from '../mutations-type'
 
 
@@ -28,10 +29,13 @@ const mutations = {
   [DEL_FOOD_COUNT](state,{food}){
     if(food.count) {
       food.count -- 
-      if(!!!food.count){
+      if(!food.count){
         state.cartShops.splice(state.cartShops.indexOf(food), 1)
       }
     }
+  },
+  [SAVE_CARTSHOPS](state, {cartShops}){
+    state.cartShops = cartShops
   },
   [CLEAR_CARTSHOPS](state){
     state.cartShops.forEach(food => food.count = 0)
